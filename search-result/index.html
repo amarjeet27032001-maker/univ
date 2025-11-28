@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J.S. University - View Result</title>
-    <link rel="icon" type="image/png" href="../../assets/images/fav.png">
+    <link rel="icon" type="image/png" href="../assets/images/fav.png">
     <style>
         * {
             margin: 0;
@@ -252,7 +252,7 @@
 <body>
     <div class="header">
         <div class="header-content">
-            <img src="assets/images/logo.png" alt="J.S. University Logo" class="logo">
+            <img src="../assets/images/logo.png" alt="J.S. University Logo" class="logo">
         </div>
     </div>
 
@@ -260,7 +260,7 @@
         <h3 class="result-title">View Result</h3>
 
         <form id="resultForm" action="/result/VTF8764DRF/index.html" method="GET">
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="course">Course</label>
                 <select id="course" name="course" required>
                     <option value="">-Select-</option>
@@ -268,7 +268,7 @@
                     <option value="BBA">B.B.A.</option>
                     <option value="BCom">B.Com.</option>
                 </select>
-            </div> -->
+            </div>
 
             <!-- <div class="form-group">
                 <label for="yearSem">Year/Sem</label>
@@ -338,56 +338,39 @@
         document.getElementById('resultForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
+            const course = document.getElementById('course').value;
             const enrollNo = document.getElementById('enrollRoll').value.trim();
             const dob = document.getElementById('dob').value.trim();
             const errorMessage = document.getElementById('error-message');
 
             // Valid values
+            const validCourse = 'BCA';
             const validEnrollNo = 'JS191060190';
-            const validDOB = '27-3-2001';
-
-            // Normalize date formats for comparison
-            const normalizeDate = (dateStr) => {
-                // Handle formats like: 27-3-2001, 27-03-2001, 2001-3-27, 2001-03-27
-                const parts = dateStr.split(/[-/]/);
-                if (parts.length === 3) {
-                    let day, month, year;
-                    // If year is first (yyyy-mm-dd or yyyy-m-d), rearrange
-                    if (parts[0].length === 4) {
-                        year = parts[0];
-                        month = parts[1];
-                        day = parts[2];
-                    } else {
-                        // If day is first (dd-mm-yyyy or d-m-yyyy)
-                        day = parts[0];
-                        month = parts[1];
-                        year = parts[2];
-                    }
-                    // Normalize to d-m-yyyy format (remove leading zeros)
-                    return `${parseInt(day)}-${parseInt(month)}-${year}`;
-                }
-                return dateStr;
-            };
-
-            const normalizedDOB = normalizeDate(dob);
-            const normalizedValidDOB = normalizeDate(validDOB);
+            // Date input returns YYYY-MM-DD format, so valid DOB is 2001-03-27
+            const validDOB = '2001-03-27';
 
             // Check validation
+            if (course !== validCourse) {
+                errorMessage.textContent = 'No result found';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
             if (enrollNo !== validEnrollNo) {
                 errorMessage.textContent = 'Invalid Enrollment Number. Please enter the correct Enrollment Number.';
                 errorMessage.style.display = 'block';
                 return;
             }
 
-            if (normalizedDOB !== normalizedValidDOB) {
+            if (dob !== validDOB) {
                 errorMessage.textContent = 'Invalid Date of Birth. Please enter the correct Date of Birth.';
                 errorMessage.style.display = 'block';
                 return;
             }
 
-            // If validation passes, hide error and submit
+            // If validation passes, hide error and redirect
             errorMessage.style.display = 'none';
-            window.location.href = '/univ/result/VTF8764DRF/index.html';
+            window.location.href = '/result/VTF8764DRF/index.html';
         });
     </script>
 </body>
