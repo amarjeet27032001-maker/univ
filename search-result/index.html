@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.S. University - View Result</title>
+    <link rel="icon" type="image/png" href="assets/images/fav.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #2196F3;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            margin-bottom: 30px;
+            border-bottom: 3px solid black;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .logo {
+            /* width: 60px; */
+            height: 40px;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .university-info {
+            flex: 1;
+        }
+
+        .university-name-hindi {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .university-name-english {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .university-note {
+            font-size: 9px;
+            opacity: 0.9;
+        }
+
+        .menu-btn {
+            background-color: #e5e7eb;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            margin: 0 auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 15px;
+        }
+
+        .form-group label {
+            width: 180px;
+            font-weight: bold;
+            color: #333;
+            flex-shrink: 0;
+        }
+
+        .form-group select,
+        .form-group input {
+            flex: 1;
+            padding: 8px 0;
+            border: none;
+            border-bottom: 2px solid #00BCD4;
+            border-radius: 0;
+            font-size: 15px;
+            background-color: transparent;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-bottom-color: #1e3a8a;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0 center;
+            padding-right: 25px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
+            background-color: #dc2626;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .divider {
+            height: 2px;
+            background-color: #dc2626;
+            margin: 40px 0;
+        }
+
+        .contact-section {
+            padding: 10px 0;
+        }
+
+        .contact-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .contact-info {
+            line-height: 1.6;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .copyright {
+            font-size: 14px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #374151;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .result-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .form-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .form-group label {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .form-group select,
+            .form-group input {
+                width: 100%;
+            }
+
+            .form-actions {
+                justify-content: center;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="assets/images/logo.png" alt="J.S. University Logo" class="logo">
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="result-title">View Result</h3>
+
+        <form id="resultForm" action="/result/VTF8764DRF/index.html" method="GET">
+            <!-- <div class="form-group">
+                <label for="course">Course</label>
+                <select id="course" name="course" required>
+                    <option value="">-Select-</option>
+                    <option value="BCA">B.C.A.</option>
+                    <option value="BBA">B.B.A.</option>
+                    <option value="BCom">B.Com.</option>
+                </select>
+            </div> -->
+
+            <!-- <div class="form-group">
+                <label for="yearSem">Year/Sem</label>
+                <select id="yearSem" name="yearSem" required>
+                    <option value="">-Select Year / Sem--</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
+                </select>
+            </div> -->
+
+            <!-- <div class="form-group">
+                <label for="branch">Branch</label>
+                <select id="branch" name="branch" required>
+                    <option value="">--Select Branch--</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Electronics">Electronics</option>
+                </select>
+            </div> -->
+
+            <div class="form-group">
+                <label for="enrollRoll">Enroll No / Roll No.</label>
+                <input type="text" id="enrollRoll" name="enrollRoll" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div id="error-message" style="color: #dc2626; margin-top: 10px; display: none; font-size: 14px;"></div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="contact-section">
+            <div class="contact-title">J.S UNIVERSITY</div>
+            <div class="contact-info">
+                Mainpuri Road, Shikohabad<br>
+                Dist. Firozabad (U.P)<br>
+                Fax: 05676-235572<br>
+                Phone: 9410839291
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="copyright">© Copyright © 2015 University. All rights reserved</div>
+            <div class="social-icons">
+                <a href="#" class="social-icon">▶</a>
+                <a href="#" class="social-icon">in</a>
+                <a href="#" class="social-icon">G</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('resultForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const enrollNo = document.getElementById('enrollRoll').value.trim();
+            const dob = document.getElementById('dob').value.trim();
+            const errorMessage = document.getElementById('error-message');
+
+            // Valid values
+            const validEnrollNo = 'JS191060190';
+            const validDOB = '27-3-2001';
+
+            // Normalize date formats for comparison
+            const normalizeDate = (dateStr) => {
+                // Handle formats like: 27-3-2001, 27-03-2001, 2001-3-27, 2001-03-27
+                const parts = dateStr.split(/[-/]/);
+                if (parts.length === 3) {
+                    let day, month, year;
+                    // If year is first (yyyy-mm-dd or yyyy-m-d), rearrange
+                    if (parts[0].length === 4) {
+                        year = parts[0];
+                        month = parts[1];
+                        day = parts[2];
+                    } else {
+                        // If day is first (dd-mm-yyyy or d-m-yyyy)
+                        day = parts[0];
+                        month = parts[1];
+                        year = parts[2];
+                    }
+                    // Normalize to d-m-yyyy format (remove leading zeros)
+                    return `${parseInt(day)}-${parseInt(month)}-${year}`;
+                }
+                return dateStr;
+            };
+
+            const normalizedDOB = normalizeDate(dob);
+            const normalizedValidDOB = normalizeDate(validDOB);
+
+            // Check validation
+            if (enrollNo !== validEnrollNo) {
+                errorMessage.textContent = 'Invalid Enrollment Number. Please enter the correct Enrollment Number.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            if (normalizedDOB !== normalizedValidDOB) {
+                errorMessage.textContent = 'Invalid Date of Birth. Please enter the correct Date of Birth.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // If validation passes, hide error and submit
+            errorMessage.style.display = 'none';
+            window.location.href = '/result/VTF8764DRF/index.html';
+        });
+    </script>
+</body>
+
+</html>
